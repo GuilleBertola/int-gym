@@ -55,4 +55,20 @@ describe("Member", () => {
       "Ana Pérez (doc. 12345678) - Plan Completo - $1500",
     );
   });
+
+  test("Asignar un descuento al miembro", () => {
+    member.discount = 20;
+    expect(member.discount).toBe(20);
+  });
+
+  test("Asignar un descuento invalido al miembro", () => {
+    expect(() => (member.discount = -1)).toThrow();
+  });
+
+  test("ToString de miembro con descuento", () => {
+    member.discount = 20;
+    expect(member.toString()).toBe(
+      "Ana Pérez (doc. 12345678) - Plan Completo - $1500 - Descuento: %20",
+    );
+  });
 });
